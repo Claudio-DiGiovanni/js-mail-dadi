@@ -18,26 +18,34 @@ Consigli del giorno:
 5. proviamo ad immaginare le operazioni che vogliamo far svolgere al nostro programma così come lo faremmo "a mano" */
 
 const emailList = ["digioclaudio97@gmail.com", "altramail@libero.com", "mailinventata@live.it" ]
-const userEmail = prompt("inserisci la tua email")
-
-if (emailList.includes(userEmail)) {
-    console.log("puoi accedere")
-} else {
-    console.log ("non puoi accedere")
-} 
 
 const min = Math.ceil(1);
 const max = Math.floor(6);
 const userNum = parseInt(Math.floor(Math.random() * (max - min + 1) + min));
 const computerNum = parseInt(Math.floor(Math.random() * (max - min + 1) + min));
 
-console.log(userNum);
-console.log(computerNum);
+document.getElementById("run").addEventListener("click", function () {
+    const userEmail = document.getElementById("email").value
 
-if (userNum > computerNum) {
-    console.log("Hai vinto")
-} else if (userNum == computerNum) {
-    console.log("Parità")
-} else {
-    console.log("Hai perso")
-}
+    if (emailList.includes(userEmail)) {
+        document.querySelector(".player").innerHTML += "<p>Puoi giocare</p>"
+        document.querySelector(".dadi").innerHTML += '<div class="dado col-3" id="dado1"></div><div class="dado col-3" id="dado2"></div>'
+
+
+        document.getElementById("dado1").innerHTML = userNum;
+        document.getElementById("dado2").innerHTML = computerNum;
+
+        if (userNum > computerNum) {
+            document.querySelector(".dadi").innerHTML += '<p class="result">Hai vinto</p>'
+        } else if (userNum == computerNum) {
+            document.querySelector(".dadi").innerHTML += '<p class="result">Parità</p>'
+        } else {
+            document.querySelector(".dadi").innerHTML += '<p class="result">Hai perso</p>'
+        }
+    } else {
+        document.querySelector(".player").innerHTML += "<p>La tua email non è nella lista dei giocatori. Prego inserisci una mail valida per giocare </p>"
+    } 
+})
+
+
+
