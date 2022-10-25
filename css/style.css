@@ -2,20 +2,74 @@ body{
     background-color: darkgoldenrod;
 }
 
-.dado{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: blueviolet;
-    aspect-ratio: 1 / 1;
-    font-size: 30px;
-    font-weight: 700;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+h1{
+    font-size: 70px;
+    font-weight: 900;
 }
 
 .result{
     font-size: 40px;
     font-weight: 900;
     text-align: center;
-    margin-top: 3rem;
+
 }
+
+.wrap {
+	perspective: 800px;
+	perspective-origin: 50% 100px;
+}
+
+.cube {
+	position: relative;
+	width: 200px;
+	transform-style: preserve-3d;
+    animation: spin 5s infinite linear;
+}
+
+.cube div {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+}
+
+.back {
+	transform: translateZ(-100px) rotateY(180deg);
+}
+.right {
+	transform: rotateY(-270deg) translateX(100px);
+	transform-origin: top right;
+}
+.left {
+	transform: rotateY(270deg) translateX(-100px);
+	transform-origin: center left;
+}
+.top {
+	transform: rotateX(-90deg) translateY(-100px);
+	transform-origin: top center;
+}
+.bottom {
+	transform: rotateX(90deg) translateY(100px);
+	transform-origin: bottom center;
+}
+.front {
+	transform: translateZ(100px);
+}
+
+@keyframes spin {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
+}
+
+.back, .left, .right, .top, .bottom, .front{
+    background-color: antiquewhite;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px
+}
+
+#risultato{
+    margin-top: 20rem;
+}
+

@@ -28,22 +28,42 @@ document.getElementById("run").addEventListener("click", function () {
     const userEmail = document.getElementById("email").value
 
     if (emailList.includes(userEmail)) {
-        document.querySelector(".player").innerHTML += "<p>Puoi giocare</p>"
-        document.querySelector(".dadi").innerHTML += '<div class="dado col-3" id="dado1"></div><div class="dado col-3" id="dado2"></div>'
+        document.querySelector(".player").innerHTML += '<p class="fs-3">Puoi giocare</p>'
+        document.querySelector(".dadi").innerHTML += `<div class="wrap col-3">
+        <div class="cube">
+            <div class="dado1 result front">${userNum}</div>
+            <div class="dado1 result back">${userNum}</div>
+            <div class="dado1 result top">${userNum}</div>
+            <div class="dado1 result bottom">${userNum}</div>
+            <div class="dado1 result left">${userNum}</div>
+            <div class="dado1 result right">${userNum}</div>
+        </div>
+    </div>
+
+    <div class="wrap col-3">
+        <div class="cube">
+            <div class="dado2 result front">${computerNum}</div>
+            <div class="dado2 result back">${computerNum}</div>
+            <div class="dado2 result top">${computerNum}</div>
+            <div class="dado2 result bottom">${computerNum}</div>
+            <div class="dado2 result left">${computerNum}</div>
+            <div class="dado2 result right">${computerNum}</div>
+        </div>
+    </div>`
 
 
-        document.getElementById("dado1").innerHTML = userNum;
-        document.getElementById("dado2").innerHTML = computerNum;
+        document.querySelector(".dado1").innerHTML = userNum;
+        document.querySelector(".dado2").innerHTML = computerNum;
 
         if (userNum > computerNum) {
-            document.querySelector(".dadi").innerHTML += '<p class="result">Hai vinto</p>'
+            document.querySelector("#risultato").innerHTML += '<p class="result">Hai vinto</p>'
         } else if (userNum == computerNum) {
-            document.querySelector(".dadi").innerHTML += '<p class="result">Parità</p>'
+            document.querySelector("#risultato").innerHTML += '<p class="result">Parità</p>'
         } else {
-            document.querySelector(".dadi").innerHTML += '<p class="result">Hai perso</p>'
+            document.querySelector("#risultato").innerHTML += '<p class="result">Hai perso</p>'
         }
     } else {
-        document.querySelector(".player").innerHTML += "<p>La tua email non è nella lista dei giocatori. Prego inserisci una mail valida per giocare </p>"
+        document.querySelector(".player").innerHTML += '<p class="fs-3">La tua email non è nella lista dei giocatori. Prego inserisci una mail valida per giocare </p>'
     } 
 })
 
